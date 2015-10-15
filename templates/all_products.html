@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+    {% block jumbotron %}
+      <!-- Jumbotron -->
+      <div class="jumbotron">
+        <h1>Products Arrived</h1>
+        <p class="lead">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+        <a class="btn btn-large btn-success" href="#">Get started today</a>
+      </div>
+      
+      {% endblock %}
+      
+      
+      {% block content %}
+      
+         
+      {% for good in goods %}
+        {% cycle '<div class="row-fluid">' '' '' '' %}
+                <div class='span3'>
+          
+                     <h3>{{ good }} {{ good.slug }}</h3>
+                    {% for image in images %}
+                      {% if image.product == good %}{% endif %}
+                      {{ <img src='{{ MEDIA_URL }}{{ image }}'/> }}
+                     {% endfor %} 
+                    <img src='{{ MEDIA_URL }}{{ image }}'/>
+                    {% endfor %}
+                {{ goood.description|truncatewords:10 }}<br/>
+                {{ good.price }}
+
+           {% cycle '' '' '' '</div><hr/>' %}
+          
+        </div>
+        {% endfor %}
+    {% endblock %}    
