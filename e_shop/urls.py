@@ -6,7 +6,7 @@ from customer.views import *
 
 urlpatterns = [
     # Examples:
-    # url(r'^$', 'e_shop.views.home', name='home'),
+    url(r'^$', 'goods.views.all_products', name='home'),
     # url(r'^blog/', include('blog.urls')),
 
     url(r'^admin/', include(admin.site.urls)),
@@ -15,4 +15,8 @@ urlpatterns = [
     url(r'^index/', 'goods.views.all_products', name='home'),
     url(r'^contact/', 'customer.views.contactUs', name='contact'),
     url(r'^all_prod/', 'goods.views.all_products', name='all_prod'),
+    url(r'^(?P<slug>.*)/$', 'goods.views.single_product',),
+    url(r'^services/', 'customer.service.service', name='service'),
+    
+    # url(r'^single_product/', 'goods.views.single_product',),
 ]

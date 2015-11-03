@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 
+
     {% block jumbotron %}
       <!-- Jumbotron -->
       <div class="jumbotron">
@@ -8,28 +9,98 @@
         <a class="btn btn-large btn-success" href="#">Get started today</a>
       </div>
       
-      {% endblock %}
+      {% endblock jumbotron %}
+
+      <!-- {% for product in products %}
+        {% cycle '<div class="row-fluid">' '' '' '' %}
+        <div class='col-md-6'>
+          
+          <h3>{{ product }} {{ product.slug }}</h3>
+                    {% for image in product.photo_set.all %}
+            <img src='{{ MEDIA_URL }}{{ image }}'/>
+            {% endfor %}
+          {{ product.description|truncatewords:10 }}<br/>
+          {{ product.price }}
+
+          
+        </div>
+        {% cycle '' '' '' '</div><hr/>' %}
+        {% endfor %} -->
+
       
       
       {% block content %}
+      {% for product in products %}
+        {% cycle '<div class="row-fluid">' '' '' '' %}
+        <div class='col-md-6'>
+          
+          <h3><a href='{% url "all_prod" %}{{ product.slug }}'>{{ product }}</a></h3>
+                    {% for image in product.photo_set.all %}
+                      <!-- {% if forloop.first %} -->
+            <a href='{% url "all_prod" %}{{ product.slug }}'><img src='{{ MEDIA_URL }}{{ image }}'/></a>
+            <!-- {% endif %} -->
+            {% endfor %}
+          {{ product.description|truncatewords:10 }}<br/>
+          {{ product.price }}
+
+          
+        </div>
+        {% cycle '' '' '' '</div><hr/>' %}
+        {% endfor %}
+        {% endblock %}
+
       
          
-      {% for good in goods %}
-        {% cycle '<div class="row-fluid">' '' '' '' %}
+       <!--  {% for product in products %}
+            {% cycle '<div class="row-fluid ">' '' '' '' %}
+
+      
+            <div class= "col-sm-12">
+            <h3><a href="{% url 'all_prod' %}}{{ product.slug }}">{{product}}</a></h3>
+
+                      {% comment %}
+                       collects all images that relates to proper product in database
+                       here: photo -  model Photo
+                      {% endcomment %}
+                      
+              {% for image in product.photo_set.all %}
+               
+                {% if forloop.first %}
+                  <a href="{% url 'all_prod' %}}{{ product.slug }}">
+                  <img src ='{{ MEDIA_URL }}{{ image }}'></a>
+                  {% endif %}
+
+               {% endfor %}
+        
+              {{ product.description|truncatewords:5 }}<br>
+              <h4>{{ product.price }} USD</h4><hr>
+     
+             </div>
+              {% cycle '' '' '' '</div><hr>' %}
+        {% endfor %}
+           -->
+       
+        
+
+      
+
+
+
+
+       <!--  {% cycle '<div class="row-fluid">' '' '' '' %}
                 <div class='span3'>
           
                      <h3>{{ good }} {{ good.slug }}</h3>
-                    {% for image in images %}
-                      {% if image.product == good %}{% endif %}
-                      {{ <img src='{{ MEDIA_URL }}{{ image }}'/> }}
-                     {% endfor %} 
-                    <img src='{{ MEDIA_URL }}{{ image }}'/>
-                    {% endfor %}
-                {{ goood.description|truncatewords:10 }}<br/>
+                    {% for im in image %}
+                      {% if im.product == good %}{% endif %}
+                      <img src="{{ media.photos.url }}" />
+                     
+                     
+                 
+                    {% endfor %} -->
+               <!--  {{ good.description|truncatewords:10 }}<br/>
                 {{ good.price }}
 
-           {% cycle '' '' '' '</div><hr/>' %}
-          
-        </div>
-        {% endfor %}
-    {% endblock %}    
+           {% cycle '' '' '' '</div><hr/>' %} -->
+       
+       

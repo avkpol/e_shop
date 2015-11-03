@@ -18,7 +18,7 @@ reasign standart admin model
 '''
 
 class GoodAdmin (admin.ModelAdmin):
-	inlines = [  PhotoInline ] #
+	inlines = [PhotoInline] #
 	list_filter = ['name', 'price', 'available_q', 'add_date']
 	list_display = ('name', 'price', 'available_q', 'add_date',)
 	class Meta:

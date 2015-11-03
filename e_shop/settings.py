@@ -45,13 +45,14 @@ INSTALLED_APPS = (
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
+    
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'django.middleware.security.SecurityMiddleware',
+    # 'django.middleware.security.SecurityMiddleware',
 )
 
 ROOT_URLCONF = 'e_shop.urls'
@@ -90,11 +91,13 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
 TEMPLATE_DIRS = (os.path.join(BASE_DIR, "templates"), )
-# TEMPLATE_DIRS = ('/volumes/storage/_codework/e_shop/src/e_shop/templates',)
+
 
 STATICFILES_DIRS = (
   os.path.join(BASE_DIR, "static"),
 )
+
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR,"static")
+STATIC_ROOT = '/static/'
+MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR,"media")
